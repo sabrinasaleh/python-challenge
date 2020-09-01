@@ -8,7 +8,6 @@ months = []
 profit_loss = []
 change_profit_loss = []
 
-
 with open(path, "r") as file:
     csv_reader = csv.reader(file)
     csv_header = next(csv_reader)
@@ -21,32 +20,36 @@ with open(path, "r") as file:
         monthly_change = int(profit_loss[i+1]) - int(profit_loss[i])
         change_profit_loss.append(monthly_change)
         
-    # total_months 
+    # count_months 
         count_months = len(months)
         
     # total_profit_loss        
         profit_loss_int = map(int, profit_loss)
-        net_profit_loss = sum(profit_loss_int)  
+        total_profit_loss = sum(profit_loss_int)       
         
      # average_change
-        average_change = sum(change_profit_loss)/len(change_profit_loss)
+        average_change = round(sum(change_profit_loss)/len(change_profit_loss), 2)
         
     # greatest_increase & greatest_decrease
         greatest_increase = max(change_profit_loss)
         greatest_decrease = min(change_profit_loss) 
         
-                
+    # index for month_increase & month_decrease
+        index_increase = change_profit_loss.index(max(change_profit_loss))+1
+        month_increase = months[index_increase]
+        index_decrease = change_profit_loss.index(min(change_profit_loss))+1 
+        month_decrease = months[index_decrease]
+
 output = ( 
     f"\nFinancial Analysis\n"
-    f"---------------------------\n"
+    f"-----------------------------\n"
     f"Total Months: {count_months}\n"
-    f"Total: ${net_profit_loss}\n"
+    f"Total: ${total_profit_loss}\n"
     f"Average Change: ${average_change}\n"
-    f"Greatest Increase in Profits: ${greatest_increase}\n"
-    f"Greatest Decrease in Profits: ${greatest_decrease}\n"
+    f"Greatest Increase in Profits: {month_increase} (${greatest_increase})\n"
+    f"Greatest Decrease in Profits: {month_decrease} (${greatest_decrease})\n"
     )
     
-
 print(output)
 
         
