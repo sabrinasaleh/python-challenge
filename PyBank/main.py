@@ -56,7 +56,6 @@ print(output)
 
 # print analysis to text file
 path_2 = os.path.join("Analysis", "results.txt")
-
 with open(path_2, "w+") as textfile:
     textfile.write(output)
 
