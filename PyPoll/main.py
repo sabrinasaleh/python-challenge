@@ -20,8 +20,7 @@ with open(path_1, "r") as csvfile:
         candidates.append(row[2])
         
 # total number of votes        
-        count_votes = len(votes)
-        
+        count_votes = len(votes)        
         
     for x in set(candidates):
         unique_candidate.append(x)
@@ -33,26 +32,20 @@ with open(path_1, "r") as csvfile:
         vote_percent.append(z)
         
         
-#         winner = unique_candidate[vote_count.index(max(vote_count))+1]
-        
-    
-    
-    
-
-
-
-
+    winner = unique_candidate[vote_count.index(max(vote_count))]
         
       
     
 
 print(f"Election Results")
-print(f"-----------------------------")
+print(f"--------------------------")
 print(f"Total Votes: {count_votes}")
+print(f"--------------------------")
 
 for i in range(len(unique_candidate)):
-    print(f"{unique_candidate[i]}: {vote_percent[i]}% ({vote_count[i]})")
+    print(f"{unique_candidate[i]}: {(vote_percent[i]):.3f}% ({vote_count[i]})")
     
-# print(f"Winner: {winner}")
-print(f"-----------------------------")
+print(f"--------------------------")
+print(f"Winner: {winner}")
+print(f"--------------------------")
    
