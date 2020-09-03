@@ -21,7 +21,7 @@ with open(path_1, "r") as csvfile:
 # total number of votes        
         count_votes = len(votes)  
     
-# vote_percent/candidate and vote_count/candidate        
+# vote_percent per candidate and vote_count per candidate        
     for x in set(candidates):
         unique_candidate.append(x)
         # y is the total number of votes per candidate
