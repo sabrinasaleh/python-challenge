@@ -31,7 +31,7 @@ with open(path_1, "r") as csvfile:
         z = (y/count_votes)*100
         vote_percent.append(z)
         
-        
+# get index for winner        
     winner = unique_candidate[vote_count.index(max(vote_count))]
         
       
