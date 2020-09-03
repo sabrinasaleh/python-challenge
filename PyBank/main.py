@@ -37,11 +37,9 @@ with open(path_1, "r") as csvfile:
         greatest_decrease = min(change_profit_loss) 
         
 # get index for month_increase & month_decrease
-        index_increase = change_profit_loss.index(max(change_profit_loss))+1
-        month_increase = months[index_increase]
-        index_decrease = change_profit_loss.index(min(change_profit_loss))+1 
-        month_decrease = months[index_decrease]
-
+        month_increase = months[change_profit_loss.index(max(change_profit_loss))+1]
+        month_decrease = months[change_profit_loss.index(min(change_profit_loss))+1] 
+        
 output = ( 
     f"Financial Analysis\n"
     f"-----------------------------\n"
