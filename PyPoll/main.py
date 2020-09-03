@@ -10,7 +10,6 @@ unique_candidate = []
 vote_count = []
 vote_percent = []
 
-
 with open(path_1, "r") as csvfile:
     csv_reader = csv.reader(csvfile)
     csv_header = next(csv_reader)
@@ -20,8 +19,9 @@ with open(path_1, "r") as csvfile:
         candidates.append(row[2])
         
 # total number of votes        
-        count_votes = len(votes)        
-        
+        count_votes = len(votes)  
+    
+# vote_percent/candidate and vote_count/candidate        
     for x in set(candidates):
         unique_candidate.append(x)
         # y is the total number of votes per candidate
@@ -32,10 +32,7 @@ with open(path_1, "r") as csvfile:
         vote_percent.append(z)
         
 # get index for winner        
-    winner = unique_candidate[vote_count.index(max(vote_count))]
-        
-      
-    
+    winner = unique_candidate[vote_count.index(max(vote_count))]    
 
 print(f"Election Results")
 print(f"--------------------------")
@@ -48,4 +45,18 @@ for i in range(len(unique_candidate)):
 print(f"--------------------------")
 print(f"Winner: {winner}")
 print(f"--------------------------")
-   
+
+# print analysis to text file
+path_2 = os.path.join("Analysis", "results.txt")
+with open(path_2, "w+") as textfile:
+    print(f"Election Results", file = textfile)
+    print(f"--------------------------", file = textfile)
+    print(f"Total Votes: {count_votes}", file = textfile)
+    print(f"--------------------------", file = textfile)
+
+    for i in range(len(unique_candidate)):
+        print(f"{unique_candidate[i]}: {(vote_percent[i]):.3f}% ({vote_count[i]})", file = textfile)
+    
+    print(f"--------------------------", file = textfile)
+    print(f"Winner: {winner}", file = textfile)
+    print(f"--------------------------", file = textfile)
