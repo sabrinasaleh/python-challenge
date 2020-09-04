@@ -4,7 +4,7 @@ import csv
 
 path_1 = os.path.join("Resources", "election_data.csv")
 
-votes = []
+voter_id = []
 candidates = []
 unique_candidate = []
 vote_count = []
@@ -15,24 +15,24 @@ with open(path_1, "r") as csvfile:
     csv_header = next(csv_reader)
         
     for row in csv_reader:
-        votes.append(row[0])
+        voter_id.append(row[0])
         candidates.append(row[2])
         
 # total number of votes        
-        count_votes = len(votes)  
+        count_votes = len(voter_id)  
     
-# vote_percent per candidate and vote_count per candidate        
-    for x in set(candidates):
-        unique_candidate.append(x)
-        # y is the total number of votes per candidate
-        y = candidates.count(x)
-        vote_count.append(y)
-        # z is the percent of total votes per candidate
-        z = (y/count_votes)*100
-        vote_percent.append(z)
-        
+# vote_count per candidate and vote_percent per candidate        
+    for candidate in set(candidates):
+        unique_candidate.append(candidate)
+        # x is total number of votes per candidate
+        x = candidates.count(candidate)
+        vote_count.append(x)
+        # y is percent of total votes per candidate
+        y = (x/count_votes)*100
+        vote_percent.append(y)
+                
 # get index for winner        
-    winner = unique_candidate[vote_count.index(max(vote_count))]    
+        winner = unique_candidate[vote_count.index(max(vote_count))]    
 
 print(f"Election Results")
 print(f"--------------------------")
