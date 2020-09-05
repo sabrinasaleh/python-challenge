@@ -12,12 +12,12 @@ with open(path_1, "r") as csvfile:
     csv_reader = csv.reader(csvfile)
     csv_header = next(csv_reader)
 
-# get the column-data of months & profit_loss
+# get the data of months & profit_loss
     for row in csv_reader:
         months.append(row[0])
         profit_loss.append(row[1])
         
-# get the column-data of change_profit_loss
+# get the data of change_profit_loss
     for i in range(len(profit_loss) - 1):
         monthly_change = int(profit_loss[i+1]) - int(profit_loss[i])
         change_profit_loss.append(monthly_change)
